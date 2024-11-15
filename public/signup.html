@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: sans-serif;
+            background: linear-gradient(to right, #8e44ad, #c0392b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            opacity: 0.9;
+            background: linear-gradient(to right, #0B2F9F, #C1F316F);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(100px);
+        }
+
+        .form-box {
+            width: 350px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #C7FFD8;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            padding-left: 40px; /* Padding to make room for the icon */
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #8a2be2;
+        }
+
+        /* Icon inside the input field */
+        .input-group i {
+            position: absolute;
+            left: 15px; /* Icon positioned at the left inside the input */
+            top: 50%;
+            transform: translateY(-50%);
+            color: #777;
+            z-index: 2; /* Ensure the icon stays above the input text */
+        }
+
+        /* Button Styles */
+        button {
+            background: linear-gradient(to bottom right, #161D6F, #C7FFD8);
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: linear-gradient(to bottom right, #FFF100, #666666);
+            color: yellow;
+        }
+
+        .back {
+            text-decoration: none;
+            color: #C7FFD8;
+        }
+
+        .back:hover {
+            text-decoration: underline;
+            color: red;
+        }
+
+        body {
+            background-image: url('signupp.jpg'); /* replace with your image URL */
+            background-size: cover; /* scale the image to cover the entire body */
+            background-repeat: no-repeat; /* prevent the image from repeating */
+        }
+ .password-toggle-icon {
+            background: none;
+            border: none;
+            color: #C7FFD8;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+
+        /* Password Strength Feedback Styles */
+        small {
+            font-size: 12px;
+            margin-top: 5px;
+            display: block;
+            margin-left: 40px; /* Align the feedback text with the input */
+            color: #666; /* Color for the feedback text */
+        }
+
+        /* Toast Notification Styles */
+        .toast {
+            visibility: hidden;
+            min-width: 250px;
+            margin-left: -125px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 2px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 17px;
+            opacity: 0;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back">Back</a>
+        <div class="form-box">
+            <h1>SignUp Form</h1>
+            <form id="signupForm" action="/signup" method="post">
+                <div class="input-group">
+                    <label for="fullName"><i class="fas fa-user"></i></label>
+                    <input type="text" id="fullName" name="fullName" placeholder="Enter Full Name" required>
+                </div>
+                <div class="input-group">
+                    <label for="username"><i class="fas fa-user"></i></label>
+                    <input type="text" id="username" name="username" placeholder="Choose a Username" required>
+                </div>
+                <div class="input-group">
+                    <label for="email"><i class="fas fa-envelope"></i></label>
+                    <input type="email" id="email" name="email" placeholder="Enter Email" required>
+                </div>
+                <div class="input-group">
+                    <label for="phoneNumber"><i class="fas fa-phone"></i></label>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Enter Phone Number" required>
+                </div>
+                <div class="input-group">
+                    <label for="crush"><i class="fas fa-heart"></i></label>
+                    <input type="text" id="crush" name="crush" placeholder="Enter Crush's Name" required>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i> <!-- Password icon -->
+                    <input type="password" id="password" name="password" placeholder="Create Password" required>
+                    <small id="passwordFeedback"></small> <!-- Password strength feedback -->
+<span id="togglePassword" class="password-toggle-icon">👁️</span>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i> <!-- Confirm password icon -->
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm Password" required>
+                    <small id="passwordMatchFeedback"></small> <!-- Password match feedback -->
+<span id="toggleConfirmPassword" class="password-toggle-icon">👁️</span>
+                </div>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script>
+// Password visibility toggle
+        document.getElementById('togglePassword').addEventListener('click', function () {
+            const passwordInput = document.getElementById('password');
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            this.textContent = type === 'password' ? '👁' : '🙈'; // Change icon based on visibility
+        });
+
+document.getElementById('toggleConfirmPassword').addEventListener('click', function () {
+    const confirmPasswordInput = document.getElementById('confirmPassword');
+    const type = confirmPasswordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    confirmPasswordInput.setAttribute('type', type);
+    this.textContent = type === 'password' ? '👁️' : '🙈'; // Change icon based on visibility
+});
+        // Function to show toast notification
+        function showToast(message) {
+            var toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast show'; // Add 'show' class to display toast
+            setTimeout(function() {
+                toast.className = toast.className.replace('show', ''); // Remove 'show' class after 3 seconds
+            }, 3000);
+        }
+
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            // Get values from input fields
+            var fullName = document.getElementById('fullName').value.trim();
+            var username = document.getElementById('username').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var phoneNumber = document.getElementById('phoneNumber').value.trim();
+            var crush = document.getElementById('crush').value.trim();
+            var password = document.getElementById('password').value.trim();
+            var confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+            // Basic validation: Check if passwords match
+            if (password !== confirmPassword) {
+                showToast("Passwords don't match!");
+                document.getElementById('password').value = "";
+                document.getElementById('confirmPassword').value = "";
+                return; 
+            }
+
+            // Send the form data to the server
+            fetch(this.action, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    fullName: fullName, 
+                    username: username, 
+                    email: email, 
+                    phoneNumber: phoneNumber, 
+                    crush: crush, 
+                    password: password 
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showToast('Account created successfully! You can now log in.');
+                    window.location.href = 'index.html'; // Redirect to login page after successful registration
+                } else {
+                    showToast(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showToast('An error occurred. Please try again later.');
+            });
+        });
+
+        // Password strength validation function
+        function validatePasswordStrength(password) {
+            var strength = 0;
+            var feedback = document.getElementById('passwordFeedback');
+            
+            // Length check
+            if (password.length >= 8) strength++;
+            if (/[A-Z]/.test(password)) strength++;  // Uppercase letters
+            if (/[a-z]/.test(password)) strength++;  // Lowercase letters
+            if (/\d/.test(password)) strength++;     // Numbers
+            if (/[!@#$%^&*(),.?":{}|<>]/.test(password)) strength++;  // Special characters
+
+            // Provide feedback based on strength
+            if (strength < 2) {
+                feedback.textContent = 'Weak password.';
+                feedback.style.color = 'red';
+            } else if (strength < 4) {
+                feedback.textContent = 'Medium password.';
+                feedback.style.color = 'orange';
+            } else {
+                feedback.textContent = 'Strong password. Good job!';
+                feedback.style.color = 'green';
+            }
+        }
+
+        // Add an event listener to the password field to validate strength as the user types
+        document.getElementById('password').addEventListener('input', function() {
+            var password = document.getElementById('password').value.trim();
+            validatePasswordStrength(password);
+        });
+    </script>
+</body>
+</html>

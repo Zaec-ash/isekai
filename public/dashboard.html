@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Portal Dashboard</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            background-image: url('bg1.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-repeat: no-repeat;
+            color: #000000; /* Darker default text color */
+        }
+
+        a {
+            text-decoration: none;
+            color: #FFEB3B; /* Link color */
+            font-weight: bold; /* Make links bold */
+		font-size: 1.5rem;
+	
+        }
+
+        a:hover {
+            color: #FFC107; /* Hover color */
+        }
+
+header {
+    position: fixed; /* Keep the header fixed at the top */
+    top: 0; /* Position it at the top of the viewport */
+    width: 100%; /* Make it span the full width */
+    z-index: 1000; /* Ensure it stays on top of other content */
+    background-color: rgba(25, 118, 210, 0.8); /* Keep background */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+        header ul {
+            display: flex;
+            list-style: none;
+
+        }
+
+        header li {
+            margin-right: 1.5rem;
+        }
+
+main {
+    margin-top: 80px; /* Adjust this value based on the navbar's height */
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    text-align: center;
+}
+
+
+        main h1 {
+            color: #FFFFFF; /* Heading color */
+            font-size: 3rem; /* Increased font size */
+        }
+
+        main h2 {
+            color: #FFFFFF; /* Heading color */
+            font-size: 2.5rem; /* Increased font size */
+            margin-bottom: 1rem;
+        }
+
+        main p {
+            color: #000000; /* Dark paragraph text */
+            font-size: 1.2rem; /* Increased font size */
+        }
+
+        footer {
+            background-color: rgba(25, 118, 210, 0.8);
+            padding: 1rem;
+            text-align: center;
+            color: #FFFFFF; /* Footer text color */
+            margin-top: 1.5rem;
+        }
+
+        .anime-card {
+            width: 250px;
+            height: 350px;
+            margin: 20px;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white for cards */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            transition: transform 0.2s;
+        }
+
+        .anime-card:hover {
+            transform: scale(1.05);
+        }
+
+        .anime-card img {
+            width: 100%;
+            height: 150px;
+            border-radius: 10px 10px 0 0;
+        }
+
+        .anime-card .info {
+            padding: 10px;
+text-align: center;
+        }
+
+        .anime-card .info h3 {
+            margin-top: 0;
+            color: #1976D2; /* Card title color */
+            font-size: 1.5rem; /* Increased font size */
+        }
+
+        .anime-card .info p {
+            color: #000000; /* Dark description text */
+            font-size: 1rem; /* Increased font size */
+        }
+header nav ul {
+    display: flex;
+    list-style: none;
+	
+}
+
+header nav ul li a {
+float: right;
+} .title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #FF4081, #FFC107);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+            margin-left: 1rem;
+        }#buy-figurines {
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+#buy-figurines h2 {
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+}
+
+.figurine-card {
+    width: 250px;
+    height: 390px;
+    margin: 20px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: inline-block;
+    transition: transform 0.2s;
+}
+
+.figurine-card:hover {
+    transform: scale(1.05);
+}
+
+.figurine-card img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px 10px 0 0;
+}
+
+.figurine-card .info {
+    padding: 10px;
+    text-align: center;
+}
+
+.figurine-card .info h3 {
+    margin-top: 0;
+    color: #1976D2;
+    font-size: 1.5rem;
+}
+
+.figurine-card .info p {
+    color: #000000;
+    font-size: 1rem;
+}
+
+.buy-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #FF4081;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.buy-button:hover {
+    background-color: #FFC107;
+}
+/* About Us Section */
+#about-us {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white;
+    padding: 3rem 2rem;
+    text-align: center;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+
+#about-us h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+color:yellow;
+}
+
+#about-us p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.about-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.about-image img {
+    width: 250px;
+    height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.about-text {
+    max-width: 600px;
+    text-align: left;
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    color: #FF4081;
+    margin-top: 1.5rem;
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    color: #FFFFFF;
+    margin-top: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+    }
+}.textt{
+color:white;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+	<p class="title">AnimePortal</p>
+        <nav>
+            <ul>
+		
+                <li><a href="dashboard.html">Home</a></li>
+                <li><a href="#buy-figurines">Figurine</a></li>
+                <li><a href="#about-us">About Us</a></li>
+                <li><a href="#" id="logoutLink" title="Logout"><span
+class="material-icons">logout</span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="welcome-section">
+		<div class="sidebar-welcome">
+<h2>Hello, <span id="userEmail">[User's Email]</span>!</h2>
+</div>
+            <p>Here you can manage your account, view anime recommendations, and more!</p>
+        </section>
+        <section id="anime-recommendations">
+            <h2>Anime Recommendations</h2>
+            <div class="anime-card">
+                <img src="aot.jpg" alt="Anime Image">
+                <div class="info">
+                    <h3>Attack on Titan</h3>
+                    <p>Attack on Titan is a dark fantasy about humanity's fight for survival against giant, man-eating Titans.</p>
+                </div>
+            </div>
+            <div class="anime-card">
+                <img src="love.jpg" alt="Anime Image">
+                <div class="info">
+                    <h3>Love is War</h3>
+                    <p>Love is War is a romantic comedy where two students turn confessing love into a clever psychological battle.</p>
+                </div>
+            </div>
+            <div class="anime-card">
+                <img src="orv.jpg" alt="Anime Image">
+                <div class="info">
+                    <h3>O.R.V</h3>
+                    <p>Omniscient Reader's Viewpoint is a fantasy series where a reader becomes part of the story they once read.</p>
+                </div>
+            </div>
+            <div class="anime-card">
+                <img src="mob.jpg" alt="Anime Image">
+                <div class="info">
+                    <h3>Mob Psycho</h3>
+                    <p>Mob Psycho 100 follows a young psychic, Mob, as he navigates life while controlling his immense powers.</p>
+                </div>
+            </div>
+            <div class="anime-card">
+                <img src="slime.jpg" alt="Anime Image">
+                <div class="info">
+                    <h3>TenSura</h3>
+                    <p>That Time I Got Reincarnated as a Slime is about a man reborn as a powerful slime in a fantasy world.</p>
+                </div>
+            </div>
+ <div class="anime-card">
+                <img src="ff.jpg" alt="Anime Image">
+                <div class="info">
+                    <h3>Fire Force</h3>
+                    <p>Fire Force follows firefighters with fire powers battling humans who combust into dangerous flames.</p>
+                </div>
+            </div>
+ <div class="anime-card">
+                <img src="bnh.jpeg" alt="Anime Image">
+                <div class="info">
+                    <h3>Boku No Hero</h3>
+                    <p>My Hero Academia is about a boy born without powers in a world of heroes, striving to become the greatest hero.</p>
+                </div>
+            </div>
+ <div class="anime-card">
+                <img src="hxh.jpg" alt="Anime Image">
+                <div class="info">
+                    <h3>HunterXHunter</h3>
+                    <p>Hunter x Hunter follows a young boy, Gon, as he embarks on a journey to find his missing father and become a Hunter.</p>
+                </div>
+            </div>
+	
+        <section id="buy-figurines">
+	<h1> 💙</h1>
+        <h2>Buy Anime Figurines</h2>
+        <div class="figurine-card">
+            <img src="gg.jpg" alt="Figurine 1">
+            <div class="info">
+                <h3>Gojo And Geto</h3>
+                <p>Price: 816.33 pesos</p>
+                 <a href="https://www.lazada.com.ph/products/10pcs-anime-jujutsu-kaisen-figure-gk-geto-suguru-satoru-gojo-cute-action-figures-pvc-staute-model-doll-ornaments-toy-gift-kids-i4733683235-s27380299662.html?c=&channelLpJumpArgs=&clickTrackInfo=query%253Agojo%252Banime%252Bfigure%253Bnid%253A4733683235%253Bsrc%253ALazadaMainSrp%253Brn%253A1964864564dc244c92dd7f374a1a087b%253Bregion%253Aph%253Bsku%253A4733683235_PH%253Bprice%253A816.33%253Bclient%253Adesktop%253Bsupplier_id%253A501122224701%253Bbiz_source%253Ah5_internal%253Bslot%253A31%253Butlog_bucket_id%253A470687%253Basc_category_id%253A5510%253Bitem_id%253A4733683235%253Bsku_id%253A27380299662%253Bshop_id%253A5497691%253BtemplateInfo%253A-1_A3_C%2523116035_B_D_E_L_A0%2523108490_G%2523&configId=choice_PH_promotion&freeshipping=1&fs_ab=2&fuse_fs=&lang=en&location=Overseas&price=816.33&priceCompare=skuId%3A27380299662%3Bsource%3Alazada-search-voucher%3Bsn%3A1964864564dc244c92dd7f374a1a087b%3BoriginPrice%3A81633%3BdisplayPrice%3A81633%3BsinglePromotionId%3A900000040068257%3BsingleToolCode%3AshopPromPrice%3BvoucherPricePlugin%3A0%3Btimestamp%3A1731563788880&ratingscore=&request_id=1964864564dc244c92dd7f374a1a087b&review=&sale=8&search=1&source=search&spm=a211g0.searchlist.list.31&stock=1&upItemIds=4733683235" class="buy-button" target="_blank">Buy Now</a>
+            </div>
+        </div>
+        <div class="figurine-card">
+            <img src="f2.jpg" alt="Figurine 2">
+            <div class="info">
+                <h3>Guko</h3>
+                <p>Price: 1,031.70 pesos</p>
+                 <a href="https://www.lazada.com.ph/products/15cm-dragonball-z-dbz-anime-super-saiyan-son-goku-vegeta-trunks-movable-shf-pvc-action-figure-model-toy-kids-gift-i2242654239-s10113712210.html?c=&channelLpJumpArgs=&clickTrackInfo=query%253Adbz%252Banime%252Bfigures%253Bnid%253A2242654239%253Bsrc%253ALazadaMainSrp%253Brn%253Ad79ed3eee9e87ea7d49f528a223b8b51%253Bregion%253Aph%253Bsku%253A2242654239_PH%253Bprice%253A1031.7%253Bclient%253Adesktop%253Bsupplier_id%253A100013004%253Bbiz_source%253Ah5_internal%253Bslot%253A23%253Butlog_bucket_id%253A470687%253Basc_category_id%253A5510%253Bitem_id%253A2242654239%253Bsku_id%253A10113712210%253Bshop_id%253A724%253BtemplateInfo%253A107881_D_E%2523-1_A3_C%2523&freeshipping=1&fs_ab=2&fuse_fs=&lang=en&location=China&price=1031.7&priceCompare=skuId%3A10113712210%3Bsource%3Alazada-search-voucher%3Bsn%3Ad79ed3eee9e87ea7d49f528a223b8b51%3BoriginPrice%3A103170%3BdisplayPrice%3A103170%3BsinglePromotionId%3A900000039222164%3BsingleToolCode%3ApromPrice%3BvoucherPricePlugin%3A0%3Btimestamp%3A1731563640341&ratingscore=3.0&request_id=d79ed3eee9e87ea7d49f528a223b8b51&review=4&sale=3&search=1&source=search&spm=a2o4l.searchlist.list.23&stock=1" class="buy-button" target="_blank">Buy Now</a>
+            </div>
+        </div>
+        <div class="figurine-card">
+            <img src="f3.png" alt="Figurine 3">
+            <div class="info">
+                <h3>Tsunayoshi Sawada</h3>
+                <p>Price: 2,500 pesos</p>
+                 <a href="https://www.lazada.com.ph/products/authentic-pop-up-parade-tsunayoshi-sawada-katekyo-hitman-reborn-i4533111601-s25964271385.html?c=&channelLpJumpArgs=&clickTrackInfo=query%253Ahitman%252Breborn%252Banime%252Bfigures%253Bnid%253A4533111601%253Bsrc%253ALazadaMainSrp%253Brn%253A6cdfd06c38f4eb7601d806381a3ad3a2%253Bregion%253Aph%253Bsku%253A4533111601_PH%253Bprice%253A2500%253Bclient%253Adesktop%253Bsupplier_id%253A500173596066%253Bbiz_source%253Ah5_internal%253Bslot%253A32%253Butlog_bucket_id%253A470687%253Basc_category_id%253A5510%253Bitem_id%253A4533111601%253Bsku_id%253A25964271385%253Bshop_id%253A2122917%253BtemplateInfo%253A107881_D_E%2523-1_A3_C%2523&freeshipping=0&fs_ab=2&fuse_fs=&lang=en&location=Metro%20Manila&price=2.5E%203&priceCompare=skuId%3A25964271385%3Bsource%3Alazada-search-voucher%3Bsn%3A6cdfd06c38f4eb7601d806381a3ad3a2%3BoriginPrice%3A250000%3BdisplayPrice%3A250000%3BsinglePromotionId%3A-1%3BsingleToolCode%3AmockedSalePrice%3BvoucherPricePlugin%3A0%3Btimestamp%3A1731563239611&ratingscore=&request_id=6cdfd06c38f4eb7601d806381a3ad3a2&review=&sale=0&search=1&source=search&spm=a2o4l.searchlist.list.32&stock=0" class="buy-button" target="_blank">Buy Now</a>
+            </div>
+        </div>
+    </section>
+<!-- About Us Section -->
+<section id="about-us">
+<h1> 💙</h1>
+    <h2>About Anime Portal</h2>
+    <p class="textt">Welcome to Anime Portal, your ultimate destination for everything anime! From the latest anime releases to exclusive figurines, we provide you with top-notch recommendations and collections to enhance your anime experience.</p>
+    <div class="about-content">
+        <div class="about-image">
+            <img src="all.png" alt="Anime Portal Logo">
+        </div>
+        <div class="about-text">
+            <h3>Our Mission</h3>
+            <p>At Anime Portal, we strive to bring together anime fans from all over the world. Our mission is to create a community where users can share their passion for anime, discover new shows, and purchase high-quality anime merchandise and figurines.</p>
+            <h3>Our Story</h3>
+            <p>Founded in 2024, Anime Portal began as a small fan project and quickly grew into a vibrant community of anime lovers. We believe that anime is more than just entertainment—it's a culture that connects people across the globe.</p>
+        </div>
+    </div>
+</section>
+    </main>
+    <footer>
+        <p>&copy; 2023 Anime Portal. All rights reserved.</p>
+    </footer>
+    <script>
+// Fetch user details when the page loads
+document.addEventListener('DOMContentLoaded', function () {
+fetchUserDetails();
+});
+async function fetchUserDetails() {
+try {
+const response = await fetch('/user-details', { credentials: 'include' });
+if (!response.ok) {
+throw new Error('Failed to fetch user details.');
+}
+const data = await response.json();
+if (data.success) {
+// Update the element with user email
+document.getElementById('userEmail').textContent = data.user.email;
+} else {
+console.error('Failed to fetch user details:', data.message);
+}
+} catch (error) {
+console.error('Error fetching user details:', error);
+}
+}
+// Add logout functionality
+document.getElementById('logoutLink').addEventListener('click', function (event) {
+event.preventDefault();
+performLogout();
+});
+async function performLogout() {
+try {
+const response = await fetch('/logout', {
+method: 'POST',
+credentials: 'include'
+});
+if (response.ok) {
+// Redirect to login page
+window.location.href = 'index.html';
+} else {
+console.error('Logout failed');
+}
+} catch (error) {
+console.error('Error during logout:', error);
+}
+}
+</script>
+</body>
+</html>
